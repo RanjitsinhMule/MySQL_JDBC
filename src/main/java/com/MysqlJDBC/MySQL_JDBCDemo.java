@@ -31,6 +31,18 @@ public class MySQL_JDBCDemo {
 			con = (Connection) DriverManager.getConnection(jdbcURL, username, password);
 			System.out.println("connection is successfull" + con);
 
+			int id;
+			String name;
+			Double salaey;
+			Date start_date;
+			Statement stmt;
+			int rs1;
+			ResultSet rs;
+
+			PreparedStatement preparedStmt;
+			stmt = (Statement) con.createStatement();
+			rs = stmt.executeQuery("select * from employee_payroll");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
