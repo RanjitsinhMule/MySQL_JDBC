@@ -42,7 +42,13 @@ public class MySQL_JDBCDemo {
 			PreparedStatement preparedStmt;
 			stmt = (Statement) con.createStatement();
 			rs = stmt.executeQuery("select * from employee_payroll");
-			
+			String query = "update employee_payroll set salary=? where name=?";
+			preparedStmt = (PreparedStatement) con.prepareStatement(query);
+			preparedStmt.setFloat(1, (float) 51000.0);
+			preparedStmt.setString(2, "Rakesh");
+
+			rs1 = preparedStmt.executeUpdate();
+
 			rs1 = stmt.executeUpdate("update employee_payroll set salary=50000 where name = 'Anirban'");
 			System.out.println("data updated " + rs);
 		} catch (Exception e) {
